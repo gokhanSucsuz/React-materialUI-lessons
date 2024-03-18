@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { InputAdornment, Stack, TextField } from "@mui/material";
 
 const LessonTextField = () => {
-	const [value, setValue] = useState();
+	const [value, setValue] = useState("");
 	return (
 		<Stack spacing={3}>
 			<Stack direction="row" spacing={2}>
@@ -31,20 +31,17 @@ const LessonTextField = () => {
 					inputProps={{ readOnly: true }}
 				/>
 				<TextField
-					onChange={(e) => e.target.value}
+					onChange={(e) => setValue(e.target.value)}
 					hiddenLabel
 					id="filled-hidden-label-normal"
-					defaultValue="Normal"
-					variant="filled"
+					value={value}
+					variant="outlined"
 					size="small"
 					color="error"
-					helperText="Please enter your name..."
-					type="password"
+					helperText={!value ? "Please type something..." : "Bravo!"}
 					InputProps={{
-						startAdornment: (
-							<InputAdornment position="start">TL</InputAdornment>
-						),
-						endAdornment: <InputAdornment position="end">TL</InputAdornment>,
+						startAdornment: <InputAdornment position="start">€</InputAdornment>,
+						endAdornment: <InputAdornment position="end">$</InputAdornment>,
 					}}
 				/>
 			</Stack>
